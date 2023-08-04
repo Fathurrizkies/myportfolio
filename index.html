@@ -14,6 +14,13 @@
             document.documentElement.classList.remove('dark')
         }
     </script>
+    <script type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+    (function(){
+        emailjs.init("XuEjKretvbXfLz1kN");
+    })();
+</script>
 </head>
 <body>
     <!-- Header Mulai -->
@@ -224,28 +231,44 @@
     <section id="contact" class="pt-36 pb-0 dark:bg-slate-800">
         <div class="container">
             <div class="w-full px-4">
-                <div class="max-w-xl mx-auto text-center mb-16">
+                <div class="max-w-xl mx-auto text-center mb-5">
                     <h4 class="font-semibold text-lg text-primary mb-2 ">Contact Me</h4>
                     <h2 class="font-bold text-dark text-3xl mb-4 sm:text-4xl lg:text-5xl dark:text-white">Hubungi Kami</h2>
-                    <p class="font-medium text-medium text-secondary md:text-lg">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias necessitatibus aut reprehenderit excepturi deleniti odio voluptate.</p>
+                    <p class="font-medium text-medium text-secondary md:text-lg">Saya Sangat Menghargai Seluruh Kritik dan Saran Yang Membangun!<br>
+                    Silahkan Berikan Kritik & Saran Anda.</p>
                 </div>
             </div>
-            <form>
+            <div class="alert border-2 opacity-75 bg-lime-300 my-alert rounded-lg mb-5 py-2 px-6 hidden">
+                <strong>Terima Kasih!</strong> Pesan anda telah Kami Terima.
+                <button type="button" class="right-10 show-close bg-transparent rounded-md absolute items-center justify-center text-black">
+                    <span class="sr-only"></span>
+                    <svg class="h-6 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <form name="contact-form">
                 <div class="w-full lg:w-2/3 lg:mx-auto">
                     <div class="w-full px-4 mb-8">
                         <label for="name" class="text-base font-bold text-primary">Nama</label>
-                        <input type="text" id="name" class="w-full bg-slate-200 text-dark p-3 rounded-md focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary">
+                        <input type="text" id="name" name="name" placeholder="Masukkan Nama Anda" class="form-control w-full bg-slate-200 text-dark p-3 rounded-md focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary">
                     </div>
                     <div class="w-full px-4 mb-8">
                         <label for="email" class="text-base font-bold text-primary">Email</label>
-                    <input type="email" id="email" class="w-full bg-slate-200 text-dark p-3 rounded-md focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary">
-                </div>
-                <div class="w-full px-4 mb-8">
+                    <input type="email" id="email" name="email" placeholder="Masukkan Email Anda" class="form-control w-full bg-slate-200 text-dark p-3 rounded-md focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary">
+                    </div>
+                    <div class="w-full px-4 mb-8">
                     <label for="message" class="text-base font-bold text-primary">Pesan, Saran/Kritik</label>
-                    <textarea type="email" id="email" class="w-full bg-slate-200 text-dark p-3 rounded-md focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary h-32"></textarea>
-                </div>
-                <div class="w-full px-4 mb-16">
-                    <button class="text-base font-semibold text-white bg-primary py-3 px-8 rounded-full w-full hover:opacity-80 hover:shadow-lg transition duration-500">Kirim</button>
+                    <textarea type="form-control" id="pesan" name="pesan" class="w-full bg-slate-200 text-dark p-3 rounded-md focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary h-32"></textarea>
+                    </div>
+                    <div class="w-full px-4 mb-16">
+                    <button type="button" onclick="sendMail()" class="btn-kirim text-base font-semibold text-white bg-primary py-3 px-8 mb-2 rounded-full w-full hover:opacity-80 hover:shadow-lg transition duration-500">Kirim</button>
+                    <button type="button" class="none btn-loading text-base font-semibold text-white bg-primary py-3 px-8 mb-2 rounded-full w-full hidden" disabled>
+                        <svg class="animate-spin h-0 w-5 mr-3  " viewBox="0 0 24 24">
+                          <!-- ... -->
+                        </svg>
+                        Processing...
+                    </button>
                 </div>
             </div>
         </form>

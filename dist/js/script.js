@@ -1,4 +1,4 @@
-// Navbar Fixed
+// Navbar Fixed //
 window.onscroll = function() {
     const header = document.querySelector('header');
     const fixedNav = header.offsetTop;
@@ -15,7 +15,7 @@ window.onscroll = function() {
     }
 }
 
-// Bagian Hamburger
+// Bagian Hamburger //
 const hamburger = document.querySelector('#hamburger');
 const navMenu = document.querySelector('#nav-menu');
 
@@ -53,3 +53,42 @@ if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.match
   } else {
     darkToggle.checked = false;
   }
+
+// Close
+const alert = document.querySelector('.alert')
+const showClose = document.querySelector('.show-close');
+
+showClose.addEventListener('click', function() {
+    alert.classList.add('hidden');
+})
+
+// Send Mail // 
+
+function sendMail() {
+    var params = {
+        name : document.getElementById("name").value,
+        email : document.getElementById("email").value,
+        message : document.getElementById("pesan").value,
+    };
+
+    const serviceID = "service_2lqsrre";
+    const templateID = "template_js0i3bc";
+    const btnKirim = document.querySelector('.btn-kirim');
+    const btnLoading = document.querySelector('.btn-loading');
+    const myAlert = document.querySelector('.my-alert');
+    
+    emailjs
+    .send(serviceID, templateID, params)
+    .then((res) => {
+            // Tampilkan Tombol Kirim, Hilangkan Tombol Loading
+            // btnLoading.classList.toggle('hidden');
+            // btnKirim.classList.toggle('hidden');
+            // Nampilkan Alert
+            myAlert.classList.toggle('hidden');
+            document.getElementById("name").value = "";
+            document.getElementById("email").value = "";
+            document.getElementById("pesan").value = "";
+            console.log(res);
+    })
+    .catch((err) => console.log(err));
+}
